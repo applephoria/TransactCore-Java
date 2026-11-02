@@ -1,0 +1,16 @@
+# Compilação e Binários
+target/
+*.class
+
+# IDEs e Ferramentas
+.idea/
+*.iml
+.vscode/
+.settings/
+.project
+.classpath
+
+# Logs e Arquivos Temporários
+*.log
+.DS_Store
+Thumbs.db
