@@ -12,24 +12,24 @@ O modelo relacional do **TransactCore-Java** foi concebido sob princípios rigor
 
 ```mermaid
 erDiagram
-    CONTAS ||--o{ TRANSFERENCIAS : "origina (1:N)"
-    CONTAS ||--o{ TRANSFERENCIAS : "recebe (1:N)"
+    CONTAS ||--o{ TRANSFERENCIAS : "origina"
+    CONTAS ||--o{ TRANSFERENCIAS : "recebe"
 
     CONTAS {
-        BIGSERIAL id PK "Chave Primária Autoincremental"
-        VARCHAR_100 titular "Nome completo do titular (NOT NULL)"
-        VARCHAR_11 cpf UK "Cadastro de Pessoa Física (Único e NOT NULL)"
-        NUMERIC_15_2 saldo "Saldo contábil (CHECK saldo >= 0.00)"
-        TIMESTAMP criado_em "Data e hora de abertura (DEFAULT NOW())"
+        BIGSERIAL id PK "Chave Primaria Autoincremental"
+        VARCHAR_100 titular "Nome completo do titular"
+        VARCHAR_11 cpf UK "Cadastro de Pessoa Fisica unico"
+        NUMERIC_15_2 saldo "Saldo contabil positivo"
+        TIMESTAMP criado_em "Data e hora de abertura"
     }
 
     TRANSFERENCIAS {
-        BIGSERIAL id PK "Chave Primária Autoincremental"
-        BIGINT conta_origem_id FK "Referência a contas.id (NOT NULL)"
-        BIGINT conta_destino_id FK "Referência a contas.id (NOT NULL)"
-        NUMERIC_15_2 valor "Valor da operação (CHECK valor > 0.00)"
-        TIMESTAMP data_hora "Timestamp da transação (DEFAULT NOW())"
-        VARCHAR_20 status "Estado da operação (DEFAULT 'CONCLUIDA')"
+        BIGSERIAL id PK "Chave Primaria Autoincremental"
+        BIGINT conta_origem_id FK "Referencia a conta de origem"
+        BIGINT conta_destino_id FK "Referencia a conta de destino"
+        NUMERIC_15_2 valor "Valor monetario da operacao"
+        TIMESTAMP data_hora "Data e hora da transacao"
+        VARCHAR_20 status "Estado da liquidacao contabil"
     }
 ```
 

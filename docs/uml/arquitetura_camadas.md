@@ -41,16 +41,16 @@ flowchart TD
 
     TS --> CR_INT
     TS --> TR_INT
-    TS ..> DBCONN
+    TS -.-> DBCONN
 
     CR_JDBC -.->|Implementa| CR_INT
     TR_JDBC -.->|Implementa| TR_INT
 
-    CR_JDBC --> MODEL
-    TR_JDBC --> MODEL
+    CR_JDBC --> CONTA
+    TR_JDBC --> TRANSF
 
-    CR_JDBC ..> DBCONN
-    TR_JDBC ..> DBCONN
+    CR_JDBC -.-> DBCONN
+    TR_JDBC -.-> DBCONN
 
     DBCONN --> PG
 ```

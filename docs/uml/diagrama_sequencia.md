@@ -65,7 +65,7 @@ sequenceDiagram
         Conn->>Disk: Grava todas as operações definitivamente no WAL e tabelas
     end
 
-    Service-->>Caller: [SUCCESS] Transferência Concluída
+    Service-->>Caller: Transferência Concluída com Sucesso
 ```
 
 ---

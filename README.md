@@ -131,7 +131,7 @@ sequenceDiagram
     participant Disk as PostgreSQL 18 (Disco)
 
     Caller->>Service: transferir(origem=1, destino=2, valor=50.00)
-    Service->>Conn: setAutoCommit(false) [Inicia Transação ACID]
+    Service->>Conn: setAutoCommit(false) - Inicia Transação ACID
     
     Service->>CRepo: buscarPorId(1) e buscarPorId(2)
     CRepo-->>Service: Contas carregadas na memória Heap
@@ -148,9 +148,9 @@ sequenceDiagram
     Service->>TRepo: salvar(transferencia, conn)
     TRepo->>Conn: INSERT INTO transferencias (...)
     
-    Service->>Conn: commit() [Grava atomicamente no disco]
+    Service->>Conn: commit() - Grava atomicamente no disco
     Conn->>Disk: Persistência Definitiva no WAL e Tabelas
-    Service-->>Caller: [SUCCESS] Transferência Concluída
+    Service-->>Caller: Transferência Concluída com Sucesso
 ```
 
 ---
